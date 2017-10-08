@@ -11,7 +11,7 @@ WORKDIR /cmake
 RUN curl "https://cmake.org/files/v$(echo "$CMAKE_VERSION" | cut -d. -f1-2 )/cmake-$CMAKE_VERSION.tar.gz" \
     | tar --extract --gzip --strip-components=1 \
     && cmake . \
-    && make -j \
+    && make \
     && make install \
     && rm -rf /cmake
 
@@ -61,7 +61,7 @@ RUN curl -L "https://releases.llvm.org/$LLVM_VERSION/llvm-$LLVM_VERSION.src.tar.
     && cmake \
         -D CMAKE_BUILD_TYPE=Release \
         .. \
-    && make -j \
+    && make \
     && make install \
     && rm -rf /llvm
 
