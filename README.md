@@ -1,5 +1,7 @@
 # llvm-docker
 
+[![Build Status](https://travis-ci.org/AlexandreCarlton/llvm-docker.svg?branch=master)](https://travis-ci.org/AlexandreCarlton/llvm-docker)
+
 Packages the `LLVM` toolchain in a CentOS 7 Docker image. It contains:
 
  - [`clang`](https://clang.llvm.org)
