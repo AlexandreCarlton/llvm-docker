@@ -3,7 +3,11 @@ FROM centos:7
 RUN yum install -y \
       cmake \
       curl \
+      libedit2-devel \
+      libxml2-devel \
+      ncurses-devel \
       python-devel \
+      swig \
       @"Development Tools" \
     && yum clean all
 
