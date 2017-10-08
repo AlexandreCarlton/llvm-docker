@@ -65,6 +65,7 @@ RUN curl -L "https://releases.llvm.org/$LLVM_VERSION/llvm-$LLVM_VERSION.src.tar.
     && cd build \
     && cmake \
         -D CMAKE_BUILD_TYPE=Release \
+        -D LLVM_ENABLE_CXX=ON \
         .. \
     && make \
     && make install \
