@@ -3,6 +3,7 @@ FROM centos:7
 RUN yum install -y \
       cmake \
       curl \
+      python-devel \
       @"Development Tools" \
     && yum clean all
 
