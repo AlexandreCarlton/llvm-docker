@@ -63,11 +63,18 @@ RUN curl -L "https://releases.llvm.org/$LLVM_VERSION/llvm-$LLVM_VERSION.src.tar.
     \
     mkdir -p build && \
     cd build && \
+# If we wanted a 2-stage clang build, we could use the following options:
+#  -D BOOTSTRAP_CMAKE_BUILD_TYPE=Release
+#  -D CLANG_ENABLE_BOOTSTRAP=ON
+#  -D CLANG_BOOTSTRAP_TARGETS="install-clang;install-clang-headers"
+#  -D LLVM_TARGETS_TO_BUILD=Native
+# and make the target 'stage2' - but this doesn't play nicely if we want things like lldb.
     cmake \
-        -D CMAKE_BUILD_TYPE=Release \
-        -D LLVM_ENABLE_LIBCXX=ON \
-        -D LLVM_ENABLE_RTTI=ON \
-        .. \
+      -D CMAKE_BUILD_TYPE=Release \
+      -D LLVM_ENABLE_LIBCXX=ON \
+      -D LLVM_ENABLE_RTTI=ON \
+      -D LLVM_LIBDIR_SUFFIX=64 \
+      .. && \
     make && \
     make install && \
     rm -rf /llvm
