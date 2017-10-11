@@ -74,6 +74,8 @@ RUN curl -L "https://releases.llvm.org/$LLVM_VERSION/llvm-$LLVM_VERSION.src.tar.
       -D LLVM_ENABLE_LIBCXX=ON \
       -D LLVM_ENABLE_RTTI=ON \
       -D LLVM_LIBDIR_SUFFIX=64 \
+      -D LLVM_LINK_LLVM_DYLIB=ON \
+      -D LLVM_TARGETS_TO_BUILD=host \
       .. && \
     make && \
     make install && \
